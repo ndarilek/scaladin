@@ -40,7 +40,7 @@ package mixins {
         WrapperUtil.wrapperFor(event.getOldView),
         WrapperUtil.wrapperFor(event.getNewView).get,
         Option(event.getViewName),
-        Option(event.getParameters)))
+        event.getParameters))
     }
   }
 
@@ -112,7 +112,7 @@ object Navigator {
     def enter(e: Navigator.ViewChangeEvent)
   }
 
-  case class ViewChangeEvent(navigator: Navigator, oldView: Option[Navigator.View], newView: Navigator.View, viewName: Option[String], parameters: Option[String]) extends Event
+  case class ViewChangeEvent(navigator: Navigator, oldView: Option[Navigator.View], newView: Navigator.View, viewName: Option[String], parameters: String) extends Event
 
   trait ViewDisplay extends InterfaceWrapper {
     val pViewDisplay = new com.vaadin.navigator.ViewDisplay with ViewDisplayMixin
